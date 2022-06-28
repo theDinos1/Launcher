@@ -30,8 +30,9 @@ namespace GameLauncher
     {
         private const int fixedUpdate = 5000;//milliseconds
         private const string gameFileName = "CCC.exe";
-        private const string versionUrl = "https://fileserver.velaverse.io/Version.txt";
+        private const string versionUrl = "http://fileserver.chiangmaicrypto.city/CCC-Build//Version.txt";
         private const string gameZipUrl = "http://fileserver.chiangmaicrypto.city/CCC-Build/Build.zip";
+        //private const string gameZipUrl = "http://192.168.1.127:8080/Build.zip";
         private string rootPath;
         private string versionFile;
         private string gameZip;
@@ -60,26 +61,28 @@ namespace GameLauncher
                         StatusText.Text = "Failed";
                         PlayButton.IsEnabled = true;
                         PlayButton.Content = ButtonBackgroundState(true);
-                        PlayButton.Foreground = Brushes.White;
+                        PlayButton.Foreground = ConvertColorCodeToBrush("#000000");
                         PlayButton.Content = "FAILED - RETRY";
                         break;
                     case LauncherStatus.DownloadingGame:
                         StatusText.Text = "Downloading (0%)";
                         PlayButton.IsEnabled = false;
                         PlayButton.Content = ButtonBackgroundState(false);
-                        PlayButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF9C9C9C"));
+                        PlayButton.Foreground = ConvertColorCodeToBrush("#000000");
                         PlayButton.Content = "DOWNLOADING";
                         break;
                     case LauncherStatus.DownloadingUpdate:
                         StatusText.Text = "Updating (0%)";
                         PlayButton.IsEnabled = false;
                         PlayButton.Content = ButtonBackgroundState(false);
-                        PlayButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF9C9C9C"));
+                        PlayButton.Foreground = ConvertColorCodeToBrush("#000000");
                         PlayButton.Content = "UPDATING";
                         break;
                 }
             }
         }
+
+        
 
         public MainWindow()
         {
@@ -95,10 +98,9 @@ namespace GameLauncher
         }
         private void Start()
         {
+            pbStatus.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#04CDD0"));
+            pbStatus.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
             //InitTimer();
-            pbStatus.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00FFB6"));
-            pbStatus.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#082C3A"));
-
 
         }
         private void Update()
@@ -282,7 +284,10 @@ namespace GameLauncher
         {
             Update();
         }
-
+        private Brush ConvertColorCodeToBrush(string colorCode)
+        {
+            return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorCode));
+        }
     }
     struct Version
     {

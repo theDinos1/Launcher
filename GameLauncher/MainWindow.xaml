@@ -12,7 +12,7 @@
     <Grid>
         <Image Stretch="Fill" Source="images/LauncherBackground.png" HorizontalAlignment="Left" VerticalAlignment="Center" 
                Margin="-25,0,0,0" Grid.ColumnSpan="2"/>
-        <Image Width="288" Height="504" Source="images/icon.png" Grid.Column="1" Margin="0,64,0,64" HorizontalAlignment="Center"/>
+        <Image Width="288" Height="504" Source="images/icon.png" Margin="0,-35,0,163" HorizontalAlignment="Center"/>
 
         <Button Name="PlayButton" Content="START" Click="PlayButton_Click" Height="60" FontSize="26" FontWeight="Bold" 
                 Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="150" Padding="10,1,10,1" 
