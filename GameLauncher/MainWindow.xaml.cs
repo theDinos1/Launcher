@@ -29,6 +29,9 @@ namespace GameLauncher
     public partial class MainWindow : Window
     {
         private const int fixedUpdate = 5000;//milliseconds
+        private const string gameFileName = "CCC.exe";
+        private const string versionUrl = "https://fileserver.velaverse.io/Version.txt";
+        private const string gameZipUrl = "http://fileserver.chiangmaicrypto.city/CCC-Build/Build.zip";
         private string rootPath;
         private string versionFile;
         private string gameZip;
@@ -84,7 +87,7 @@ namespace GameLauncher
             rootPath = Directory.GetCurrentDirectory();
             versionFile = Path.Combine(rootPath, "Version.txt");
             gameZip = Path.Combine(rootPath, "Build.zip");
-            gameExe = Path.Combine(rootPath, "Build", "velaverse_multiplayer.exe");
+            gameExe = Path.Combine(rootPath, "Build", gameFileName);
             webClient = new WebClient();
 
             timer1 = new Timer();
@@ -166,7 +169,7 @@ namespace GameLauncher
                 try
                 {
                     WebClient webClient = new WebClient();
-                    Version onlineVersion = new Version(webClient.DownloadString("https://fileserver.velaverse.io/Version.txt"));
+                    Version onlineVersion = new Version(webClient.DownloadString(versionUrl));
                     if (onlineVersion.IsDifferentThan(localVersion))
                     {
                         InstallGameFiles(true, onlineVersion);
@@ -201,11 +204,11 @@ namespace GameLauncher
                     else
                     {
                         LauncherStatus = LauncherStatus.DownloadingGame;
-                        onlineVersion = new Version(webClient.DownloadString("https://fileserver.velaverse.io/Version.txt"));
+                        onlineVersion = new Version(webClient.DownloadString(versionUrl));
                     }
                     webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressChanged);
                     webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadGameCompletedCallback);
-                    webClient.DownloadFileAsync(new Uri("https://fileserver.velaverse.io/Build.zip"), gameZip, onlineVersion);
+                    webClient.DownloadFileAsync(new Uri(gameZipUrl), gameZip, onlineVersion);
                 }
 
             }
@@ -252,7 +255,7 @@ namespace GameLauncher
                     break;
             }
         }
-        private bool IsConnectedToInternet()
+        /*private bool IsConnectedToInternet()
         {
             string host = "192.168.1.31";
             bool result;
@@ -267,20 +270,13 @@ namespace GameLauncher
                 result = false;
             }
             return result;
-        }
+        }*/
 
         public void InitTimer()
         {
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Interval = fixedUpdate; // in miliseconds
             timer1.Start();
-        }
-        private void SetBooleanTrue(ref bool _bool)
-        {
-            if (_bool == false)
-            {
-                _bool = true;
-            }
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
