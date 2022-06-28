@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ca8NDej6+6dyXs7hqooo/3bOlt0fQ49lTzGAtv556CLkJWzZqY18yHV3sjQNkxt1GMQCPwnSohgICec77A/2Gw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Thanapoom\\Documents\\Launcher\\GameLauncher\\GameLauncher.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Thanapoom\\.nuget\\packages\\sharpcompress\\0.31.0\\sharpcompress.0.31.0.nupkg.sha512"
+  ],
+  "logs": []
+}

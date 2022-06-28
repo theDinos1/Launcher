@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>images\AppIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DefaultEnable.png" />
+    <None Remove="images\AppIcon.ico" />
+    <None Remove="images\AppIcon.png" />
+    <None Remove="images\DefaultDisable.png" />
+    <None Remove="images\DefaultEnable.png" />
+    <None Remove="images\icon.png" />
+    <None Remove="images\LauncherBackground.png" />
+    <None Remove="images\OnClick.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="images\AppIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SharpCompress" Version="0.31.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="DefaultEnable.png" />
+    <Resource Include="images\AppIcon.ico" />
+    <Resource Include="images\DefaultDisable.png" />
+    <Resource Include="images\DefaultEnable.png" />
+    <Resource Include="images\icon.png" />
+    <Resource Include="images\LauncherBackground.png" />
+    <Resource Include="images\OnClick.png" />
+  </ItemGroup>
+
+</Project>
